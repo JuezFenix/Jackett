@@ -117,7 +117,7 @@
 
   login:
     path: /
-    method: post
+    method: form
     inputs:
       uid: "{{ .Config.username }}"
       pwd: "{{ .Config.password }}"

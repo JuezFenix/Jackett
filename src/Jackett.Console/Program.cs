@@ -27,8 +27,13 @@ namespace JackettConsole
         static void Main(string[] args)
         {
 
-            var optionsResult = Parser.Default.ParseArguments<ConsoleOptions>(args);
-            optionsResult.WithNotParsed(errors =>
+	Regex qariRegex = new Regex("(dual|triaudio|multi)|((es|spa|cast?)( *)[ /|-](*)(eng?|v( *)(\\.?)( *)o)( *))|((eng?|v( *)(\\.?)( *)o)( *)[ /|-]( *)(es|spa|cast?))", 
+RegexOptions.IgnoreCase);
+	MatchCollection mc = qariRegex.Matches("[PACK] Banshee 2ª Temporada Completa+Extra[BDRip 720p][4EVERHD][x264][AC3 5 1 Spa Eng+Subs][Grupo HDTeam]");
+	Boolean result = mc.Count > 0 && mc[0].Success;
+
+
+	var optionsResult = Parser.Default.ParseArguments<ConsoleOptions>(args);
             {
                 var text = HelpText.AutoBuild(optionsResult);
                 text.Copyright = " ";
